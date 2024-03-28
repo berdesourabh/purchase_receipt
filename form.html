@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recepit</title>
+    <style>
+        h3 {
+            text-align: center;
+        }
+
+        img {
+            max-width: 80%;
+        }
+
+        table {
+            width: 80%;
+            border-collapse: collapse;
+            margin: auto;
+        }
+
+        td,
+        th,
+        tr {
+            text-align: center;
+            border: 1px solid black;
+            padding: 10px;
+            text-align: center;
+            background-color: white;
+
+        }
+
+        input[type="text"] {
+            width: 100%;
+            box-sizing: border-box;
+            border: none;
+            background-color: transparent;
+            outline: none;
+            text-align: center;
+        }
+
+        input[type="text"]:focus {
+            outline: none;
+            border-bottom: none;
+
+        }
+
+        input[type="date"] {
+            width: 100%;
+            box-sizing: border-box;
+            border: none;
+            background-color: transparent;
+            outline: none;
+            text-align: center;
+        }
+
+        input[type="date"]::-webkit-inner-spin-button,
+        input[type="date"]::-webkit-calendar-picker-indicator {
+            display: none;
+            -webkit-appearance: none;
+        }
+
+
+        li {
+            padding: 5px;
+        }
+
+        .button-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .qty-unit, .product {
+            border: none;
+            appearance: none;
+            text-align: center;
+        }
+
+        @media print {
+            button {
+                display: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <table id="quotationTable">
+        <tbody id="quotationBody">
+            <tr>
+                <td class="logo-cell" style="width: 15%;">
+                    <img src="company_logo.png" alt="Company Logo" />
+                </td>
+                <td colspan="6">
+                    <h3>BERDEKAR KAJU UDYOG</h3>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="4" style="text-align: left;">Berdekar Kaju Udyog, Kharavate Phata,<br /> Rajapur, Ratnagiri
+                    - 416705 <br />
+                    Contact No. 9850445090 / 8600439999</td>
+                <td colspan="3" style="text-align: left;">GST No: 27ABDPB9946Q1ZZ</td>
+            </tr>
+            <tr>
+                <td colspan="4" style="white-space:nowrap;">Customer Name: <input type="text" name="customer_name"
+                        style="text-align: left;" value=""></td>
+                <td colspan="3" style="white-space:nowrap;">Customer Mobile Number:<input type="text" name="mobile"
+                        style="text-align: left;" value="">
+                </td>
+
+            </tr>
+            <tr>
+                <td colspan="4" style="white-space:nowrap;">Customer Address: <input type="text" name="address"
+                    style="text-align: left;" value=""></td>
+                <td colspan="3" style="white-space:nowrap;">Purchased Date: <input type="date" id="datePicker" class="date"
+                        value="" style="text-align: left;"></td>
+            </tr>
+            <tr>
+                <td>No</td>
+                <td colspan="2">Product</td>
+                <td style="width: 10%;">Units</td>
+                <td>Quantity</td>
+                <td>Price</td>
+                <td>Amount</td>
+            </tr>
+        </tbody>
+        <tbody id="finalAmountBody">
+            <tr class="totalAmount">
+                <td style="text-align: right;" colspan="6">
+                    <ul style="list-style-type:none;">
+                        <li>SGST(2.5%) :</li>
+                        <li>CGST(2.5%) :</li>
+                        <li>Total Amount :</li>
+                        <li>Total Discount :</li>
+                    </ul>
+                </td>
+                <td colspan="2">
+                    <ul style="list-style-type:none; text-align: left;">
+                        <li><input class="sgst" type="text" name="sgst" readonly></li>
+                        <li><input class="cgst" type="text" name="cgst" readonly></li>
+                        <li><input class="total_amount" style="font-weight: bold;" type="text" name="total_amount" readonly></li>
+                        <li><input class="total_discount" type="text" name="total_discount" readonly></li>
+                    </ul>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <br />
+    <div class="button-container">
+        <button onclick="window.print()">Print Preview</button>
+        <button id="addRowBtn" onclick="addRow()">Add Row</button>
+    </div>
+    <script src="script.js">
+    </script>
+</body>
+
+</html>
