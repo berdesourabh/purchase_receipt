@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>खरेदी पावती</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="company_logo.png" type="image/png"> <!-- Using brand logo as tab icon -->
+</head>
+<body>
+    <div class="container">
+        <!-- Brand Details Section -->
+        <div class="section-box brand-details-box">
+            <div class="brand-row">
+                <div class="brand-left">
+                    <img src="company_logo.png" alt="Brand Logo" class="brand-logo">
+                    <h2>बेर्डेकर काजु उदयोग</h2> <!-- Brand name as h3 size -->
+                </div>
+                <div class="brand-right">
+                    <p>
+                        बेर्डेकर काजू उद्योग, खरवते फाटा<br>
+                        राजापुर, रत्नागिरि, ४१६७०५<br>
+                        GST क्रमांक: ABC123XYZ<br>
+                        मोबाइल नो. ९८५०४४५०९०, ८६००४३९९९९
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Customer Details Section -->
+        <div class="section-box customer-details-box">
+            <div class="customer-details-row">
+                <div class="form-group">
+                    <label for="customerName">ग्राहकाचे नाव:</label>
+                    <input type="text" id="customerName" name="customerName" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="customerPhone">फोन नंबर:</label>
+                    <input type="tel" id="customerPhone" name="customerPhone" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="purchaseDate">खरेदी दिनांक:</label>
+                    <input type="date" id="purchaseDate" name="purchaseDate" required>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- Items Section -->
+        <div class="section-box items-details-box">
+            <div id="itemsContainer">
+                <div class="item-row">
+                    <div class="form-item item-number">
+                        <label for="itemNumber">वस्तू क्रमांक:</label>
+                        <input type="text" name="itemNumber[]" required>
+                    </div>
+
+                    <div class="form-item item-name">
+                        <label for="itemName">वस्तूचे नाव:</label>
+                        <select name="itemName[]" required>
+                            <option value=""></option>
+                            <option value="W180 काजु">W180 काजु</option>
+                            <option value="W210 काजु">W210 काजु</option>
+                            <option value="W240 काजु">W240 काजु</option>
+                            <option value="W320 काजु">W320 काजु</option>
+                            <option value="W400 काजु">W400 काजु</option>
+                            <option value="मोठी पूर्ण पकळी">मोठी पूर्ण पकळी</option>
+                            <option value="लहान पूर्ण पकळी">लहान पूर्ण पकळी</option>
+                            <option value="मोठा पकळी तुकडा">मोठा पकळी तुकडा</option>
+                            <option value="लहान पकळी तुकडा">लहान पकळी तुकडा</option>
+                            <option value="बारीक पकळी तुकडा">बारीक पकळी तुकडा</option>
+                            <option value="मोठा काजु तुकडा">मोठा काजु तुकडा</option>
+                            <option value="लहान काजु तुकडा">लहान काजु तुकडा</option>
+                        </select>
+                    </div>
+
+                    <div class="form-item item-weight">
+                        <label for="weight">वजन (किलो):</label>
+                        <input type="number" name="weight[]" step="0.01" required>
+                    </div>
+                    <div class="form-item item-original-price">
+                        <label for="originalPrice">मूळ किंमत:</label>
+                        <input type="number" name="originalPrice[]" step="0.01" required>
+                    </div>
+
+                    <div class="form-item item-offered-price">
+                        <label for="offeredPrice">ऑफर किंमत:</label>
+                        <input type="number" name="offeredPrice[]" step="0.01" required>
+                    </div>
+                </div>
+            </div>
+            <button type="button" id="addItem">आणखी एक वस्तू जोडा</button>
+        </div>
+
+        <!-- Purchase Details Section -->
+        <div class="section-box purchase-details-box">
+            <div class="purchase-row">
+                <div class="form-item sgst">
+                    <label for="sgst">SGST (2.5%):</label>
+                    <input type="number" id="sgst" name="sgst" readonly>
+                </div>
+                <div class="form-item cgst">
+                    <label for="cgst">CGST (2.5%):</label>
+                    <input type="number" id="cgst" name="cgst" readonly>
+                </div>
+                <div class="form-item total-amount">
+                    <label for="totalAmount">एकूण रक्कम:</label>
+                    <input type="number" id="totalAmount" name="totalAmount" readonly>
+                </div>
+            </div>
+            <button type="button" id="calculateTotal">एकूण रक्कम मोजा</button>
+        </div>
+
+        <!-- Print Button -->
+        <div class="form-group">
+            <button type="button" id="printButton" onclick="window.print()">प्रिंट करा</button>
+        </div>
+    </div>
+
+    <script>
+        // JavaScript to dynamically add new items
+        document.getElementById('addItem').addEventListener('click', function() {
+            const newItem = document.createElement('div');
+            newItem.classList.add('item-row');
+            newItem.innerHTML = `
+                <div class="form-item item-number">
+                    <label for="itemNumber">वस्तू क्रमांक:</label>
+                    <input type="text" name="itemNumber[]" required>
+                </div>
+                <div class="form-item item-name">
+                    <label for="itemName">वस्तूचे नाव:</label>
+                    <select name="itemName[]" required>
+                        <option value=""></option>
+                        <option value="W180 काजु">W180 काजु</option>
+                        <option value="W210 काजु">W210 काजु</option>
+                        <option value="W240 काजु">W240 काजु</option>
+                        <option value="W320 काजु">W320 काजु</option>
+                        <option value="W400 काजु">W400 काजु</option>
+                        <option value="मोठी पूर्ण पकळी">मोठी पूर्ण पकळी</option>
+                        <option value="लहान पूर्ण पकळी">लहान पूर्ण पकळी</option>
+                        <option value="मोठा पकळी तुकडा">मोठा पकळी तुकडा</option>
+                        <option value="लहान पकळी तुकडा">लहान पकळी तुकडा</option>
+                        <option value="बारीक पकळी तुकडा">बारीक पकळी तुकडा</option>
+                        <option value="मोठा काजु तुकडा">मोठा काजु तुकडा</option>
+                        <option value="लहान काजु तुकडा">लहान काजु तुकडा</option>
+                    </select>
+                </div>
+                <div class="form-item item-weight">
+                    <label for="weight">वजन (किलो):</label>
+                    <input type="number" name="weight[]" step="0.01" required>
+                </div>
+                <div class="form-item item-original-price">
+                    <label for="originalPrice">मूळ किंमत:</label>
+                    <input type="number" name="originalPrice[]" step="0.01" required>
+                </div>
+                <div class="form-item item-offered-price">
+                    <label for="offeredPrice">ऑफर किंमत:</label>
+                    <input type="number" name="offeredPrice[]" step="0.01" required>
+                </div>
+            `;
+            document.getElementById('itemsContainer').appendChild(newItem);
+        });
+
+        // JavaScript to calculate total amount including SGST and CGST
+        document.getElementById('calculateTotal').addEventListener('click', function() {
+            let total = 0;
+            const offeredPrices = document.querySelectorAll('input[name="offeredPrice[]"]');
+            const weights = document.querySelectorAll('input[name="weight[]"]');
+
+            offeredPrices.forEach((price, index) => {
+                const weight = weights[index].value;
+                total += price.value * weight;
+            });
+
+            const sgst = total * 0.025;
+            const cgst = total * 0.025;
+            const finalTotal = total + sgst + cgst;
+
+            document.getElementById('sgst').value = sgst.toFixed(2);
+            document.getElementById('cgst').value = cgst.toFixed(2);
+            document.getElementById('totalAmount').value = finalTotal.toFixed(2);
+        });
+
+        document.addEventListener('DOMContentLoaded', function() {
+                const today = new Date().toISOString().split('T')[0];
+                document.getElementById('purchaseDate').value = today; 
+            });
+    </script>
+</body>
+</html>

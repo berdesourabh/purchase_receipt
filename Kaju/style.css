@@ -1,0 +1,182 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f9;
+}
+
+.container {
+    width: 100%;
+    background-color: white;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+/* Section Boxes */
+.section-box {
+    border: 1px solid #ddd;
+    padding: 20px;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+}
+
+/* Form Inputs */
+.form-group, .form-item {
+    margin-bottom: 15px;
+}
+
+.form-group label, .form-item label {
+    display: block;
+    margin-bottom: 5px;
+
+}
+
+.form-group input, .form-item input, .form-item select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+.form-group input::placeholder, .form-item input::placeholder, .form-item select {
+    color: #aaa;
+}
+
+.form-item select {
+    appearance: none; /* Hide the default dropdown arrow */
+    background-color: white;
+}
+
+/* Customer Details Inline */
+.customer-details-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.customer-details-row .form-group {
+    flex: 1;
+}
+
+/* Items Section */
+.item-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+}
+
+.form-item {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    flex: 1;
+}
+
+.form-item label {
+    flex-shrink: 0;
+}
+
+.form-item input, .form-item select {
+    flex-grow: 1;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+/* Reduced size for brand address and GST number */
+.brand-right p {
+    font-size: larger;
+}
+
+.brand-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+}
+
+.brand-left {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.brand-logo {
+    width: 120px; /* Adjust the size as needed */
+    height: auto;
+}
+
+.brand-right {
+    text-align: right;
+}
+
+/* CSS for landscape print */
+@media print {
+    @page {
+        size: landscape;
+    }
+
+    /* Reduce font size for printing */
+    body {
+        font-size: 12px; /* Adjust as needed */
+    }
+
+    .brand-right p, .form-group label, .form-group input, .form-group select {
+        font-size: 10px;
+    }
+
+    /* Hide buttons and metadata when printing */
+    button, title, link, meta {
+        display: none !important;
+    }
+}
+/* Reduced size for brand address and GST number */
+.brand-right p {
+    font-size: smaller;
+}
+.purchase-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+
+button#addItem, button#calculateTotal {
+    width: auto;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 14px;
+    cursor: pointer;
+    margin-bottom: 15px;
+}
+
+button#addItem:hover, button#calculateTotal:hover {
+    background-color: #0056b3;
+}
+
+/* Smaller Print Button */
+button#printButton {
+    width: auto;
+    padding: 8px 16px; /* Reduced padding for a smaller button */
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 14px; /* Smaller font size */
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+button#printButton:hover {
+    background-color: #218838;
+}
