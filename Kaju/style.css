@@ -12,7 +12,7 @@ body {
 .container {
     width: 100%;
     background-color: white;
-    padding: 20px;
+    padding: 10px 20px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
 }
@@ -20,10 +20,19 @@ body {
 /* Section Boxes */
 .section-box {
     border: 1px solid #ddd;
-    padding: 20px;
-    margin-bottom: 10px;
+    padding: 15px;
+    margin-bottom: 8px;
     border-radius: 8px;
     background-color: #f9f9f9;
+}
+
+/* Brand Row using Flexbox */
+.brand-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 0 10px;
+    gap: 20px;
 }
 
 /* Form Inputs */
@@ -34,7 +43,6 @@ body {
 .form-group label, .form-item label {
     display: block;
     margin-bottom: 5px;
-
 }
 
 .form-group input, .form-item input, .form-item select {
@@ -50,7 +58,7 @@ body {
 }
 
 .form-item select {
-    appearance: none; /* Hide the default dropdown arrow */
+    appearance: none;
     background-color: white;
 }
 
@@ -90,33 +98,66 @@ body {
     border-radius: 4px;
 }
 
-/* Reduced size for brand address and GST number */
-.brand-right p {
-    font-size: larger;
-}
-
-.brand-row {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 20px;
-}
-
+/* Brand Details Section */
 .brand-left {
-    display: flex;
-    align-items: center;
-    gap: 10px;
+    text-align: left;
+    max-width: 45%; /* Constrain the address width */
 }
 
-.brand-logo {
-    width: 120px; /* Adjust the size as needed */
+.brand-center {
+    text-align: center;
+    flex-grow: 1;
+}
+
+.brand-center img {
+    width: 80px;
     height: auto;
+}
+
+.brand-center h3 {
+    margin-top: 5px;
+    font-size: 1.5em;
 }
 
 .brand-right {
     text-align: right;
+    margin-top: 10px;
 }
 
+/* Purchase Row */
+.purchase-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+/* Centered Buttons */
+.button-center {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+/* Button Styling */
+button#addItem, button#calculateTotal, button#printButton, button#resetButton {
+    width: auto;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+button#addItem:hover, button#calculateTotal:hover, button#printButton:hover, button#resetButton:hover {
+    background-color: #0056b3;
+}
+
+/* Space between print and reset button */
+.button-group button {
+    margin-right: 10px; /* Adds space between buttons */
+}
 /* CSS for landscape print */
 @media print {
     @page {
@@ -125,7 +166,7 @@ body {
 
     /* Reduce font size for printing */
     body {
-        font-size: 12px; /* Adjust as needed */
+        font-size: 12px;
     }
 
     .brand-right p, .form-group label, .form-group input, .form-group select {
@@ -136,47 +177,4 @@ body {
     button, title, link, meta {
         display: none !important;
     }
-}
-/* Reduced size for brand address and GST number */
-.brand-right p {
-    font-size: smaller;
-}
-.purchase-row {
-    display: flex;
-    justify-content: space-between;
-    gap: 20px;
-}
-
-
-button#addItem, button#calculateTotal {
-    width: auto;
-    padding: 10px 20px;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    font-size: 14px;
-    cursor: pointer;
-    margin-bottom: 15px;
-}
-
-button#addItem:hover, button#calculateTotal:hover {
-    background-color: #0056b3;
-}
-
-/* Smaller Print Button */
-button#printButton {
-    width: auto;
-    padding: 8px 16px; /* Reduced padding for a smaller button */
-    background-color: #28a745;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    font-size: 14px; /* Smaller font size */
-    cursor: pointer;
-    margin-top: 10px;
-}
-
-button#printButton:hover {
-    background-color: #218838;
 }
